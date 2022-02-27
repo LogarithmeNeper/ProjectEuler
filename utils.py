@@ -1,5 +1,6 @@
 import math
 
+# Various generators
 def fibonacci(a=0, b=1):
     """
     This function uses a generator to get values of the Fibonacci sequence.
@@ -10,7 +11,8 @@ def fibonacci(a=0, b=1):
         yield a
         a, b = b, a+b
 
-def prime_factors(n):
+# Primes
+def prime_factors(n: int):
     """
     This function is used to generate prime factors of a number and to return them as a list.
     """
@@ -29,8 +31,21 @@ def prime_factors(n):
         factors.append(n)
     return factors
 
-def is_palindrome(str):
+def generate_primes(n: int):
+    res = [2]
+    length = 1
+    curr = 3
+    while length < n:
+        if all([curr%e for e in res]):
+            res.append(curr)
+            length+=1
+        curr+=2
+    return res
+
+# Methods for string manipulation
+def is_palindrome(str: str):
     """
     Checks if a string is a palindrome with slicing.
+    Params: str 
     """
     return str==str[::-1]

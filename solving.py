@@ -67,3 +67,13 @@ def pb6():
     sum_of_squares = int(n*(n+1)*(2*n+1)/6)
     square_of_sum = int((n*(n+1)/2)**2)
     return square_of_sum-sum_of_squares
+
+def pb7():
+    n = 10001
+    lst_of_primes = utils.generate_primes(n)
+    # Casually writing some primes to be reused at some point
+    with open('./resources/primes.txt', 'w') as f:
+        for prime in lst_of_primes:
+            f.write(str(prime)+'\n')
+    return lst_of_primes[-1]
+    
