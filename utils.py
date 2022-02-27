@@ -25,4 +25,6 @@ def prime_factors(n):
         factors.append(n)
     return factors
 
-
+# Checks if a string is a palindrome with slicing.
+def is_palindrome(str):
+    return str==str[::-1]

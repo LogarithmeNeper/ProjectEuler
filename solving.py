@@ -19,3 +19,13 @@ def pb2():
 
 def pb3():
     return utils.prime_factors(600851475143)[-1]
+
+def pb4():
+    res = 0
+    for i in range(100, 1000):
+        for j in range(100, 1000):
+            candidate = i*j
+            if candidate > res:
+                if utils.is_palindrome(str(candidate)):
+                    res = candidate
+    return res
