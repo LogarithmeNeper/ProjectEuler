@@ -1,3 +1,4 @@
+from functools import reduce
 import utils
 
 def pb1():
@@ -82,4 +83,18 @@ def pb7():
             f.write(str(prime)+'\n')
     return lst_of_primes[-1]
 
-def 
+def pb8():
+    """
+    Problem 8 : Largest product in a series
+    We first open and convert data as a list of integers (string -> list[char] -> list[int]).
+    Then we use \l x,y-> xy and reduce to a single value iterating on the sliced list, and then updates if necessary.
+    """
+    with open('./resources/input_pb8.txt') as f:
+        lst = list(map(int, list(f.readline())))
+    res = 1
+    for i in range(len(lst)-13):
+        current_slice = lst[i:i+13]
+        product = reduce((lambda x, y: x*y), current_slice)
+        if product > res:
+            res = product
+    return res
