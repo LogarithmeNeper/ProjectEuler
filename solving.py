@@ -69,6 +69,11 @@ def pb6():
     return square_of_sum-sum_of_squares
 
 def pb7():
+    """
+    Problem 7 : 10001st prime
+    See utils.generate_primes for prime generation.
+    We then (apart from writing the list on a file) get the last element of the list.
+    """
     n = 10001
     lst_of_primes = utils.generate_primes(n)
     # Casually writing some primes to be reused at some point
@@ -76,4 +81,5 @@ def pb7():
         for prime in lst_of_primes:
             f.write(str(prime)+'\n')
     return lst_of_primes[-1]
-    
+
+def 

@@ -32,10 +32,14 @@ def prime_factors(n: int):
     return factors
 
 def generate_primes(n: int):
+    """
+    We iterate until we found the right length by checking if remainders with current primes are !=0
+    """
     res = [2]
     length = 1
     curr = 3
     while length < n:
+        # Implicit int -> bool there + using the all function.
         if all([curr%e for e in res]):
             res.append(curr)
             length+=1
