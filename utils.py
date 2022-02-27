@@ -46,6 +46,48 @@ def generate_primes(n: int):
         curr+=2
     return res
 
+def atkin_sieve(max_value: int):
+    """
+    We generate a list of primes below a certain threshold with a Atkin sieve (yassified Eratosthenes).
+    """
+    primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59]
+    class1 = [1, 13, 17, 29, 37, 41, 49, 53]
+    class2 = [7, 19, 31, 43]
+    class3 = [11, 23, 47, 59]
+    # Generating sieve
+    sieve = [False] * max_value
+    x=1
+    while x**2<max_value:
+        y=1
+        while y**2<max_value:
+            # ^= is equal to = not
+            # If we flip the tile an even number of time then we do not change a thing 
+            
+            # Class 1
+            current = 4*x**2+y**2
+            if (current < max_value) and (current%60 in class1):
+                sieve[current] ^= True 
+            # Class 2
+            current = 3*x**2+y**2
+            if (current < max_value) and (current%60 in class2):
+                sieve[current] ^= True
+            # Class 3
+            current = 3*x**2-y**2
+            if (current < max_value) and (x>y) and (current%60 in class3):
+                sieve[current] ^= True
+            y+=1
+        x+=1
+    nb = 7
+    while nb**2<max_value:
+        if sieve[nb]:
+            for i in range(nb**2, max_value, nb**2):
+                sieve[i]=False
+        nb+=1
+    for i in range(60, max_value):
+        if sieve[i]:
+            primes.append(i)
+    return primes
+
 # Methods for string manipulation
 def is_palindrome(str: str):
     """

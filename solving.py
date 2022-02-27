@@ -109,3 +109,11 @@ def pb9():
             k = 1000-i-j
             if (i*i+j*j)==k*k:
                 return i*j*k
+
+def pb10():
+    """
+    Problem 10 : Summation of primes
+    Adaptation from utils.generate_primes.
+    """
+    lst = utils.atkin_sieve(2000000)
+    return sum(lst)
