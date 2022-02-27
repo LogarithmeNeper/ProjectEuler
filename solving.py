@@ -1,6 +1,10 @@
 import utils
 
 def pb1():
+    """
+    Problem 1 : Multiples of 3 or 5
+    Simple iteration and adding when necessary.
+    """
     result = 0
     for i in range(1000):
         if (i%3 == 0) or (i%5 == 0):
@@ -8,6 +12,11 @@ def pb1():
     return result
 
 def pb2():
+    """
+    Problem 2 : Even Fibonacci numbers
+    See utils.fibonacci for generating numbers.
+    Simple iteration on the generator and adding when ncessary.
+    """
     result = 0
     f = utils.fibonacci()
     curr = next(f)
@@ -18,9 +27,20 @@ def pb2():
     return result
 
 def pb3():
+    """
+    Problem 3 : Largest prime factor
+    See utils.prime_factors for having the list of prime numbers.
+    Generates the list of prime factors and takes the last element.
+    """
     return utils.prime_factors(600851475143)[-1]
 
 def pb4():
+    """
+    Problem 4 : Largest palindrome product
+    See utils.is_palindrome for checking if a string is a palindrome.
+    Iterates over {100, ... , 999}^2 and discards if less than current result.
+    Otherwise, checks and updates.
+    """
     res = 0
     for i in range(100, 1000):
         for j in range(100, 1000):
