@@ -57,3 +57,13 @@ def pb5():
     """
     res = 2**4 * 3**2 * 5 * 7 * 11 * 13 * 17 * 19 # 16 * 9 * 5 * 7 * 11 * 13 * 17 * 19 
     return res
+
+def pb6():
+    """
+    Problem 6 : Sum square difference
+    By hand using sum([1..n])=n*(n+1)/2 and sum([1**2..n**2])=n*(n+1)*(2*n+1)/6
+    """
+    n = 100
+    sum_of_squares = int(n*(n+1)*(2*n+1)/6)
+    square_of_sum = int((n*(n+1)/2)**2)
+    return square_of_sum-sum_of_squares
