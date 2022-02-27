@@ -49,3 +49,11 @@ def pb4():
                 if utils.is_palindrome(str(candidate)):
                     res = candidate
     return res
+
+def pb5():
+    """
+    Problem 5 : Smallest multiple
+    By hand using max valuation for each prime in range.
+    """
+    res = 2**4 * 3**2 * 5 * 7 * 11 * 13 * 17 * 19 # 16 * 9 * 5 * 7 * 11 * 13 * 17 * 19 
+    return res
