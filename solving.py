@@ -98,3 +98,14 @@ def pb8():
         if product > res:
             res = product
     return res
+
+def pb9():
+    """
+    Problem 9 : Special Pythagorician Triplet
+    Dumb algorithm.
+    """
+    for i in range(1, 1000):
+        for j in range(1, 1000):
+            k = 1000-i-j
+            if (i*i+j*j)==k*k:
+                return i*j*k
