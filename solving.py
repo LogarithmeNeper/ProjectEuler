@@ -89,7 +89,7 @@ def pb8():
     We first open and convert data as a list of integers (string -> list[char] -> list[int]).
     Then we use \l x,y-> xy and reduce to a single value iterating on the sliced list, and then updates if necessary.
     """
-    with open('./resources/input_pb8.txt') as f:
+    with open('./resources/input_pb8.txt', 'r') as f:
         lst = list(map(int, list(f.readline())))
     res = 1
     for i in range(len(lst)-13):
@@ -113,7 +113,7 @@ def pb9():
 def pb10():
     """
     Problem 10 : Summation of primes
-    Adaptation from utils.generate_primes.
+    See utils.atkin_sieve about how we create a quicker way to get primes.
     """
     lst_of_primes = utils.atkin_sieve(2000000)
     # Casually writing some primes to be reused at some point (way better than pb7)
@@ -121,3 +121,30 @@ def pb10():
         for prime in lst_of_primes:
             f.write(str(prime)+'\n')
     return sum(lst_of_primes)
+
+def pb11():
+    """
+    Problem 11 : Largest product in a grid.
+    Just an iterative version. We work with a 1D-array.
+    """
+    grid = []
+    with open('./resources/input_pb11.txt', 'r') as f:
+        for i in range(20):
+            lst = list(map(int, f.readline().split()))
+            grid+=lst
+    res = 1
+    for i in range(len(grid)):
+        tile_products = []
+        if i < 17*20: # vertical (goes below)
+            tile_products.append(grid[i]*grid[i+20]*grid[i+2*20]+grid[i+3*20])
+        if i%20<17: # horizontal (goes right)
+            tile_products.append(grid[i]*grid[i+1]*grid[i+2]*grid[i+3])
+        # diagonals
+        if i%20<17 and i<17*20:
+            tile_products.append(grid[i]*grid[i+20+1]*grid[i+2*20+2]*grid[i+3*20+3])
+        if i%20>3 and i<17*20:
+            tile_products.append(grid[i]*grid[i+20-1]*grid[i+2*20-2]*grid[i+3*20-3])
+        m = max(tile_products) if tile_products != [] else 0
+        if res<m:
+            res = m
+    return res
