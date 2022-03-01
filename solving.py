@@ -208,3 +208,11 @@ def pb15():
     """
     res = utils.fact(40) // (utils.fact(20) ** 2)
     return res
+
+def pb16():
+    """
+    Problem 16 : Power digit sum
+    Dumb solution.
+    """
+    n = 2**1000
+    return sum(list(map(int, list(str(n)))))
