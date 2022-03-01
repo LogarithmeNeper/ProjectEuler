@@ -199,3 +199,12 @@ def pb14():
             length_sequence = len(sequence)
             res = i
     return res
+
+def pb15():
+    """
+    Problem 15 : Lattice paths
+    One could prove that the number of such paths are Catalan Numbers i.e. (2n)!/(n!)^2 or (2n n).
+    See utils.fact for implementation of the factorial function.
+    """
+    res = utils.fact(40) // (utils.fact(20) ** 2)
+    return res

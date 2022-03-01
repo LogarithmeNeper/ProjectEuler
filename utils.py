@@ -21,7 +21,6 @@ def collatz(n: int):
         n = n//2 if n%2==0 else 3*n+1
         yield n
 
-
 # Primes
 def prime_factors(n: int):
     """
@@ -139,3 +138,13 @@ def first_digits(n: int, d:int):
     Get the nth first digits of d.
     """
     return n//10**(int(math.log(n, 10))-d+1)
+
+# Other useful functions
+def fact(n: int):
+    """
+    Computes the factorial of a number iteratively (so that we do not stack recursive calls)
+    """
+    res = 1
+    for i in range(2, n+1):
+        res*=i 
+    return res
