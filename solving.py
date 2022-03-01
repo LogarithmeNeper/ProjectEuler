@@ -182,3 +182,18 @@ def pb13():
             sum += int(f.readline().strip())
     res = utils.first_digits(sum, 10)
     return res
+
+def pb14():
+    """
+    Problem 14 : Longest Collatz Sequence
+    See utils.collatz for the generator.
+    We use a generator for each number. A better idea would be to memoize the expression in an array.
+    """
+    length_sequence = -1
+    res = 0
+    for i in range(1000000):
+        sequence = list(utils.collatz(i))
+        if  len(sequence) > length_sequence:
+            length_sequence = len(sequence)
+            res = i
+    return res

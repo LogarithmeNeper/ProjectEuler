@@ -11,6 +11,17 @@ def fibonacci(a=0, b=1):
         yield a
         a, b = b, a+b
 
+def collatz(n: int):
+    """
+    This fucntion uses a generator to get values of the Collatz sequence.
+    n -> n/2 if even, n -> 3*n+1 if odd.
+    General seed has to be given.
+    """
+    while n>1:
+        n = n//2 if n%2==0 else 3*n+1
+        yield n
+
+
 # Primes
 def prime_factors(n: int):
     """
