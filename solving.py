@@ -169,3 +169,16 @@ def pb12():
         if nb_divisors > 500:
             break
     return triangular_number
+
+def pb13():
+    """
+    Problem 13: Large sum
+    Nothing to say there
+    """
+    import math
+    sum = 0
+    with open('./resources/input_pb13.txt', 'r') as f:
+        for i in range(100):
+            sum += int(f.readline().strip())
+    res = utils.first_digits(sum, 10)
+    return res

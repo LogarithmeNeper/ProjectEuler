@@ -121,3 +121,10 @@ def is_palindrome(str: str):
     Params: str 
     """
     return str==str[::-1]
+
+# Getting specific digits
+def first_digits(n: int, d:int):
+    """
+    Get the nth first digits of d.
+    """
+    return n//10**(int(math.log(n, 10))-d+1)
