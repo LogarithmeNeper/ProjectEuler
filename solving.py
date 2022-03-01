@@ -148,3 +148,24 @@ def pb11():
         if res<m:
             res = m
     return res
+
+def pb12():
+    """
+    Problem 12 : Highly divisible triangular number
+    See utils.prime_valuation on how we create a list of valuation.
+    For this problem, we use the valuation for each prime factor and say that d(n) = \prod_{i} v_{p_i}+1.
+    """
+    snd = lambda x: x[1]
+    step = 0
+    triangular_number = 0
+    while True:
+        step += 1
+        triangular_number += step
+        nb_divisors = 1
+        pval = utils.prime_valuation(triangular_number)
+        # There may be a better way of doing it with a lambda function (typically because Haskell is more simple there)
+        for j in range(len(pval)):
+            nb_divisors *= snd(pval[j])+1
+        if nb_divisors > 500:
+            break
+    return triangular_number

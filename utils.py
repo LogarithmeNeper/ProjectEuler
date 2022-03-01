@@ -31,6 +31,32 @@ def prime_factors(n: int):
         factors.append(n)
     return factors
 
+def prime_valuation(n: int):
+    """
+    This function is used to generate p-adic valuation of a number and to return them as a list with the associated prime.
+    For example : 10 -> [(2, 1), (5, 1)]
+    """
+    factors = []
+    # Getting 2^v_2(n)
+    valuation = 0
+    while n%2 == 0:
+        n /= 2
+        valuation+=1
+    if valuation!=0:
+        factors.append((2, valuation))
+    # Getting odd primes. 
+    for curr in range(3, math.floor(math.sqrt(n))+1):
+        valuation = 0
+        while n%curr == 0:
+            n /= curr
+            valuation +=1
+        if valuation !=0:
+            factors.append((curr, valuation))
+    # At this point, means that n is prime.
+    if n>2:
+        factors.append((int(n), 1))
+    return factors
+
 def generate_primes(n: int):
     """
     We iterate until we found the right length by checking if remainders with current primes are !=0
