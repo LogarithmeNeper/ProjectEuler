@@ -1,4 +1,4 @@
 from solving import *
 
 if __name__ == "__main__":
-    print(pb15())
+    print(pb10())
