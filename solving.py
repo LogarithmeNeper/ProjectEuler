@@ -187,7 +187,9 @@ def pb14():
     """
     Problem 14 : Longest Collatz Sequence
     See utils.collatz for the generator.
-    We use a generator for each number. A better idea would be to memoize the expression in an array.
+    We use a generator for each number. 
+    
+    Clearly suboptimal, as a better computing idea would be to memoize the expression in an array.
     """
     length_sequence = -1
     res = 0
