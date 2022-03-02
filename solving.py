@@ -216,3 +216,37 @@ def pb16():
     """
     n = 2**1000
     return sum(list(map(int, list(str(n)))))
+
+def pb17():
+    radix = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
+    dozens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+    linkers = ['hundred', 'thousand', 'and']
+
+    res = 0
+    for i in range(1, 1001):
+        # i = 'dcba'
+        a = i%10
+        b = (i//10)%10
+        c = (i//100)%10
+        d = (i//1000)%10
+
+        if d!=0:
+            # d thousand...
+            res+=len(radix[1])+len(linkers[1])
+        if i%1000!=0:
+            if c!=0:
+                # c hundred
+                res+=len(radix[c])+len(linkers[0])
+                if i%100!=0:
+                    # and
+                    res+=len(linkers[2])
+            if i%100!=0:
+                if b<2:
+                    # 1..19
+                    res+=len(radix[i%100])
+                else:
+                    # 20..99
+                    res+=len(dozens[b])
+                    if a!=0:
+                        res+=len(radix[a])
+    return res
