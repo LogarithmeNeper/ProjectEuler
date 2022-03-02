@@ -218,6 +218,10 @@ def pb16():
     return sum(list(map(int, list(str(n)))))
 
 def pb17():
+    """
+    Problem 17 : Number letter counts
+    Breaking every number into small pieces.
+    """
     radix = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
     dozens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
     linkers = ['hundred', 'thousand', 'and']
@@ -250,3 +254,21 @@ def pb17():
                     if a!=0:
                         res+=len(radix[a])
     return res
+
+def pb18():
+    """
+    Problem 18 : Maximum Path Sum I
+    We go a bottom-up approach to get the maximum value on the flow coming from last row to first.
+    See pb67. Same approach, way bigger triangle.
+    """
+    triangle = []
+    with open('./resources/input_pb18.txt', 'r') as f:
+        for i in range(15):
+            lst = list(map(int, f.readline().strip().split()))
+            triangle.append(lst)
+    
+    # Asking to get the best value in each row by going from bottom to top.
+    for i in range(len(triangle)-2, -1, -1):
+        for j in range(len(triangle[i])):
+            triangle[i][j]+=max(triangle[i+1][j], triangle[i+1][j+1])
+    return triangle[0][0]
