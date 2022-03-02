@@ -272,3 +272,21 @@ def pb18():
         for j in range(len(triangle[i])):
             triangle[i][j]+=max(triangle[i+1][j], triangle[i+1][j+1])
     return triangle[0][0]
+
+def pb67():
+    """
+    Problem 67 : Maximum Path Sum II
+    We go a bottom-up approach to get the maximum value on the flow coming from last row to first.
+    See pb18. Same approach, way smaller triangle.
+    """
+    triangle = []
+    with open('./resources/input_pb67.txt', 'r') as f:
+        for i in range(100):
+            lst = list(map(int, f.readline().strip().split()))
+            triangle.append(lst)
+    
+    # Asking to get the best value in each row by going from bottom to top.
+    for i in range(len(triangle)-2, -1, -1):
+        for j in range(len(triangle[i])):
+            triangle[i][j]+=max(triangle[i+1][j], triangle[i+1][j+1])
+    return triangle[0][0]
