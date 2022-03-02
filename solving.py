@@ -273,6 +273,10 @@ def pb18():
             triangle[i][j]+=max(triangle[i+1][j], triangle[i+1][j+1])
     return triangle[0][0]
 
+def pb20():
+    n = utils.fact(100)
+    return sum(list(map(int, list(str(n)))))
+
 def pb67():
     """
     Problem 67 : Maximum Path Sum II
