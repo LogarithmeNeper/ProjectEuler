@@ -273,6 +273,19 @@ def pb18():
             triangle[i][j]+=max(triangle[i+1][j], triangle[i+1][j+1])
     return triangle[0][0]
 
+def pb19():
+    """
+    Problem 19 : Counting Sunday.
+    For this problem, I make the exception in using a specific library, because working with modular values all the time bothers me.
+    We build the date and check weekday equals to Sunday (6, see documentation or linting)
+    """
+    import datetime
+    res = 0
+    for year in range(1901, 2001):
+        for month in range(1, 13):
+            res+=int(datetime.date(year, month, 1).weekday()==6)
+    return res 
+
 def pb20():
     n = utils.fact(100)
     return sum(list(map(int, list(str(n)))))
