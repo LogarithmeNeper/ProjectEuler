@@ -287,10 +287,21 @@ def pb19():
     return res 
 
 def pb20():
+    """
+    Problem 20 : Factorial digits sum.
+    Basic implementation as we convert multiple times.
+    """
     n = utils.fact(100)
     return sum(list(map(int, list(str(n)))))
 
 def pb22():
+    """
+    Problem 22 : Names scores.
+    We first open the file, suppress the useless ", put everything into lowercase, and split to get a list.
+    We use merge sort to sort the list by alphabetical order (see utils.merge_sort), and then :
+    - for each word in the list
+        - for each character in the list we get its alphabetical rank (ord - 96, that why we needed lowercase) and we sum.
+    """
     res = 0
     with open('./resources/input_pb22.txt', 'r') as f:
         lst = f.readline().replace('"', '').lower().split(sep=',')
