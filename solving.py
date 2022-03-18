@@ -290,6 +290,16 @@ def pb20():
     n = utils.fact(100)
     return sum(list(map(int, list(str(n)))))
 
+def pb22():
+    res = 0
+    with open('./resources/input_pb22.txt', 'r') as f:
+        lst = f.readline().replace('"', '').lower().split(sep=',')
+    utils.merge_sort(lst)
+    for i in range(len(lst)):
+        res += sum([ord(char)-96 for char in lst[i]])*(i+1)
+    return res
+
+
 def pb67():
     """
     Problem 67 : Maximum Path Sum II

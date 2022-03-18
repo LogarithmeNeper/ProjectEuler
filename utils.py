@@ -139,6 +139,45 @@ def first_digits(n: int, d:int):
     """
     return n//10**(int(math.log(n, 10))-d+1)
 
+# Sorting algorithms
+def merge_sort(lst: list):
+    """
+    Implementation of the merge sort algorithm in O(n.log(n)) time complexity.
+    Does not return anything but modifies the object.
+    """ 
+    if len(lst) > 1:
+        # Splitting
+        piv = len(lst) // 2
+        left_list = lst[:piv]
+        right_list = lst[piv:]
+
+        # Sorting
+        merge_sort(left_list)
+        merge_sort(right_list)
+
+        # Merging
+        i = 0
+        j = 0
+        k = 0
+        # Constructing for the basic elements
+        while i < len(left_list) and j < len(right_list):
+            if left_list[i] < right_list[j]:
+                lst[k] = left_list[i]
+                i+=1
+            else:
+                lst[k] = right_list[j]
+                j+=1
+            k+=1
+        # IF elements are left in either splited list
+        while i < len(left_list):
+            lst[k] = left_list[i]
+            i+=1
+            k+=1
+        while j < len(right_list):
+            lst[k] = right_list[j]
+            j+=1
+            k+=1   
+
 # Other useful functions
 def fact(n: int):
     """
